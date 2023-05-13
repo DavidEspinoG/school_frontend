@@ -5,7 +5,7 @@ const getStudents = createAsyncThunk(
   'students/getStudents', 
   async () => {
     const res = await axios.get('http://localhost:3000/students');
-    return res.data
+    return res.data;
   }
 );
 

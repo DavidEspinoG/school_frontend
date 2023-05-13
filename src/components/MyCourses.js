@@ -13,9 +13,10 @@ const MyCourses = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     if(studentLogged) {
-      dispatch(fetchStudentCourses(1));
+      dispatch(fetchStudentCourses(currentStudentId));
+      
     }
-  }, [studentLogged, dispatch])
+  }, [studentLogged, dispatch, currentStudentId])
   return (
     <div>
       <h2>My Courses</h2>
@@ -27,7 +28,10 @@ const MyCourses = () => {
               <p>{element.name}</p>
               <button
                 onClick={() => {
-                  dispatch(fetchCurrentCourse(element.id));
+                  dispatch(fetchCurrentCourse({
+                    studentId: currentStudentId, 
+                    courseId: element.id
+                  }));
                   navigate('/MyGrades');
                 }}
               >
