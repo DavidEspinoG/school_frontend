@@ -28,12 +28,21 @@ const fetchCourseGrades = createAsyncThunk(
   }
 )
 
+const fetchAllCourses = createAsyncThunk(
+  'courses/fetchAllCourses', 
+  async () => {
+    const res = await axios.get('http://localhost:3000/courses');
+    return res.data;
+  }
+)
+
 const coursesSlice = createSlice({
   name: 'courses', 
   initialState: {
     courses: [], 
     currentCourse: {}, 
     currentCourseGrades: [],
+    allCourses: []
   }, 
   reducers: {
     cleanCurrentCourse: (state) => {
@@ -52,10 +61,13 @@ const coursesSlice = createSlice({
       .addCase(fetchCourseGrades.fulfilled, (state, action) => {
         state.currentCourseGrades = action.payload;
       })
+      .addCase(fetchAllCourses.fulfilled, (state, action) => {
+        state.allCourses = action.payload;
+      })
   }
 })
 
 export default coursesSlice;
-export { fetchStudentCourses, fetchCurrentCourse, fetchCourseGrades };
+export { fetchStudentCourses, fetchCurrentCourse, fetchCourseGrades, fetchAllCourses};
 
 export const { cleanCurrentCourse } = coursesSlice.actions;

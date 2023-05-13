@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logStudent } from "../redux/login/loginSlice";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const StudentLogin = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,7 @@ const StudentLogin = () => {
         <button type="submit">Submit</button>
       </form>
       {error ? <p>The email or the password are not correct</p> : ''}
+      <Link to="/" >Home</Link>
     </div>
   )
 };

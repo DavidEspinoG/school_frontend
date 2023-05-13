@@ -1,6 +1,9 @@
 import { useSelector } from "react-redux";
 import AdminLogoutButton from "./AdminLogoutButton";
 import { Link } from "react-router-dom";
+import AllStudents from "../components/AllStudents";
+import AllCourses from "../components/AllCourses";
+
 const AdminView = () => {
   const adminLogged = useSelector(state => state.login.adminLogged);
 
@@ -9,7 +12,8 @@ const AdminView = () => {
     {adminLogged ? 
       <>
         <h1>Admin view</h1>
-        <h2>All courses</h2>
+        <AllStudents />
+        <AllCourses />
         <h2>Create new student</h2>
         <h2>Create new course</h2>
         <h2>Edit students grades</h2>

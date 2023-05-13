@@ -1,23 +1,22 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getStudents } from "../redux/students/studentsSlice";
+import { fetchAllCourses } from "../redux/courses/coursesSlice";
 
-const AllStudents = () => {
+const AllCourses = () => {
   const dispatch = useDispatch();
-  const students = useSelector(state => state.students.students);
+  const courses = useSelector(state => state.courses.allCourses);
   useEffect(() => {
-    dispatch(getStudents());
+    dispatch(fetchAllCourses());
   }, [dispatch])
   return (
     <>
-      <h2>My Classmates</h2>
+      <h2>All Courses</h2>
       <div>
-        {students.map(element => {
+        {courses.map(element => {
           return (
             <div key={element.id}>
               <div>{element.name}</div>
-              <div>{element.email}</div>
             </div>
           )
         })}
@@ -26,4 +25,4 @@ const AllStudents = () => {
   )
 };
 
-export default AllStudents;
+export default AllCourses;

@@ -3,6 +3,7 @@ import { logAdmin } from "../redux/login/loginSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
@@ -40,6 +41,7 @@ const AdminLogin = () => {
         <button type="submit">Submit</button>
       </form>
       {error ? <p>The email or the password are not correct</p> : ''}
+      <Link to="/" >Home</Link>
     </div>
   )
 };

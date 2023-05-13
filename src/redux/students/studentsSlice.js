@@ -12,7 +12,7 @@ const getStudents = createAsyncThunk(
 const studentsSlice = createSlice({
   name: 'students', 
   initialState: {
-    students: []
+    students: [],
   },
   extraReducers: (builder) => {
     builder.addCase(getStudents.fulfilled, (state, action) => {
