@@ -3,6 +3,7 @@ import AdminLogoutButton from "./AdminLogoutButton";
 import { Link } from "react-router-dom";
 import AllStudents from "../components/AllStudents";
 import AllCourses from "../components/AllCourses";
+import CreateNewStudent from "../components/CreateNewStudent";
 
 const AdminView = () => {
   const adminLogged = useSelector(state => state.login.adminLogged);
@@ -14,7 +15,7 @@ const AdminView = () => {
         <h1>Admin view</h1>
         <AllStudents />
         <AllCourses />
-        <h2>Create new student</h2>
+        <CreateNewStudent />
         <h2>Create new course</h2>
         <h2>Edit students grades</h2>
         <AdminLogoutButton />
