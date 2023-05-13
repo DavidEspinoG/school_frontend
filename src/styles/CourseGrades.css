@@ -1,0 +1,4 @@
+.course-table-row {
+  display: flex;
+  gap: 20px;
+}

@@ -21,9 +21,6 @@ const getStudentDetailCourses = createAsyncThunk(
   'students/getStudentDetailCourses',
   async (studentId) => {
     const res = await axios.get(`http://localhost:3000/students/${studentId}/courses`);
-    console.log(studentId)
-    //http://localhost:3000/students/2/courses
-    console.log(res.data)
     return res.data;
   }
 );

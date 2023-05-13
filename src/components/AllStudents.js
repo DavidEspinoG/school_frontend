@@ -44,7 +44,7 @@ const AllStudents = () => {
                     navigate(`/StudentDetail`)
                   }}
                 >
-                  Student's grades
+                  Student's courses
                 </button>
               </div>
             </div>
