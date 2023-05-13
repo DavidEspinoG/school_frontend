@@ -1,6 +1,9 @@
+import { useSelector } from "react-redux";
+
 const MyGrades = () => {
+  const courseName = useSelector(state => state.courses.currentCourse.name)
   return (
-    <h1>This course's grades</h1>
+    <h1>{courseName}'s grades</h1>
   )
 };
 
