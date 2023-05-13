@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { cleanStudentDetail } from "../redux/students/studentsSlice";
 import { useDispatch } from "react-redux";
 import CreateNewStudentCourse from "../components/CreateStudentCourse";
-
+import { cleanStudentDetailCourses } from "../redux/students/studentsSlice";
 const StudentDetail = () => {
   const studentDetail = useSelector(state => state.students.studentDetail);
   const navigate = useNavigate();
@@ -27,6 +27,7 @@ const StudentDetail = () => {
         onClick={() => {
           navigate(`/admin`);
           dispatch(cleanStudentDetail());
+          dispatch(cleanStudentDetailCourses());
         }}
       >
         Back

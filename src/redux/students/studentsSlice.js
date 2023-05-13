@@ -21,9 +21,9 @@ const getStudentDetailCourses = createAsyncThunk(
   'students/getStudentDetailCourses',
   async (studentId) => {
     const res = await axios.get(`http://localhost:3000/students/${studentId}/courses`);
-    // console.log(studentId)
+    console.log(studentId)
     //http://localhost:3000/students/2/courses
-    // console.log(res.data)
+    console.log(res.data)
     return res.data;
   }
 );
@@ -38,6 +38,9 @@ const studentsSlice = createSlice({
   reducers: {
     cleanStudentDetail: (state) => {
       state.studentDetail = {};
+    },
+    cleanStudentDetailCourses: (state) => {
+      state.studentDetailCourses = [];
     }
   },
   extraReducers: (builder) => {
@@ -56,4 +59,4 @@ const studentsSlice = createSlice({
 
 export default studentsSlice;
 export { getStudents, getStudentDetail, getStudentDetailCourses }
-export const { cleanStudentDetail } = studentsSlice.actions;
+export const { cleanStudentDetail, cleanStudentDetailCourses } = studentsSlice.actions;
