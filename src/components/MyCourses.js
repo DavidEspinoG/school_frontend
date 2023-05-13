@@ -2,10 +2,12 @@ import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { fetchStudentCourses } from "../redux/courses/coursesSlice";
+import { fetchCurrentCourse } from "../redux/courses/coursesSlice";
 
 const MyCourses = () => {
   const studentLogged = useSelector(state => state.login.studentLogged);
   const courses = useSelector(state => state.courses.courses);
+  const currentStudentId = useSelector(state => state.login.currentStudent.id)
   const dispatch = useDispatch();
   useEffect(() => {
     if(studentLogged) {
@@ -21,12 +23,15 @@ const MyCourses = () => {
           return (
             <div key={element.id}>
               <p>{element.name}</p>
-              <button>See my grades</button>
+              <button
+                onClick={() => dispatch(fetchCurrentCourse(element.id))}
+              >
+                See my grades
+              </button>
             </div>
           )
         })}
       </div>
-      
     </div>
   )
 };
