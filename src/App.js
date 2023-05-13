@@ -5,6 +5,7 @@ import AdminLogin from './routes/AdminLogin';
 import MyGrades from './routes/MyGrades';
 import AdminView from './routes/AdminView';
 import StudentView from './routes/StudentView';
+import StudentDetail from './routes/StudentDetail';
 
 function App() {
   return (
@@ -15,7 +16,8 @@ function App() {
         <Route path="AdminLogin" element={<AdminLogin/>}/>
         <Route path="MyGrades" element={<MyGrades/>}/>
         <Route path="admin" element={<AdminView/>}/>
-        <Route path="studentView" element={<StudentView/>}/>
+        <Route path="studentView" element={<StudentView/>} />
+        <Route path="StudentDetail" element={<StudentDetail/>} />
         <Route path="*" element={<p>Not found</p>}/>
       </Routes>
     </>

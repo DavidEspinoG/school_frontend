@@ -3,8 +3,12 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { getStudents } from "../redux/students/studentsSlice";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { getStudentDetail } from "../redux/students/studentsSlice";
+import { getStudentDetailCourses } from "../redux/students/studentsSlice";
 
 const AllStudents = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const deleteStudent = async (id) => {
     const res = await axios.delete(`http://localhost:3000/students/${id}`);
@@ -32,6 +36,15 @@ const AllStudents = () => {
                   onClick={() => handleDelete(element.id)}
                 >
                   Delete Student
+                </button>
+                <button
+                  onClick={() => {
+                    dispatch(getStudentDetail(element.id));
+                    dispatch(getStudentDetailCourses(element.id));
+                    navigate(`/StudentDetail`)
+                  }}
+                >
+                  Student's grades
                 </button>
               </div>
             </div>

@@ -9,17 +9,51 @@ const getStudents = createAsyncThunk(
   }
 );
 
+const getStudentDetail = createAsyncThunk(
+  'students/getStudentDetail',
+  async (id) => {
+    const res = await axios.get(`http://localhost:3000/students/${id}`);
+    return res.data;
+  }
+);
+
+const getStudentDetailCourses = createAsyncThunk(
+  'students/getStudentDetailCourses',
+  async (studentId) => {
+    const res = await axios.get(`http://localhost:3000/students/${studentId}/courses`);
+    // console.log(studentId)
+    //http://localhost:3000/students/2/courses
+    // console.log(res.data)
+    return res.data;
+  }
+);
+
 const studentsSlice = createSlice({
   name: 'students', 
   initialState: {
     students: [],
+    studentDetail: {},
+    studentDetailCourses: [],
+  },
+  reducers: {
+    cleanStudentDetail: (state) => {
+      state.studentDetail = {};
+    }
   },
   extraReducers: (builder) => {
-    builder.addCase(getStudents.fulfilled, (state, action) => {
+    builder
+      .addCase(getStudents.fulfilled, (state, action) => {
       state.students = action.payload;
-    })
+      })
+      .addCase(getStudentDetail.fulfilled, (state, action) => {
+        state.studentDetail = action.payload;
+      })
+      .addCase(getStudentDetailCourses.fulfilled, (state, action) => {
+        state.studentDetailCourses= action.payload;
+      })
   } 
 })
 
 export default studentsSlice;
-export { getStudents }
+export { getStudents, getStudentDetail, getStudentDetailCourses }
+export const { cleanStudentDetail } = studentsSlice.actions;

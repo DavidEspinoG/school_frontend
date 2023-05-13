@@ -16,8 +16,6 @@ const AdminView = () => {
         <AllStudents />
         <AllCourses />
         <CreateNewStudent />
-        <h2>Create new course</h2>
-        <h2>Edit students grades</h2>
         <AdminLogoutButton />
       </> 
     : 
