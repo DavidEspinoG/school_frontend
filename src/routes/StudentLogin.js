@@ -39,7 +39,7 @@ const StudentLogin = () => {
         />
         <button type="submit">Submit</button>
       </form>
-      {error ? <p>The email or the password is not correct</p> : ''}
+      {error ? <p>The email or the password are not correct</p> : ''}
     </div>
   )
 };
