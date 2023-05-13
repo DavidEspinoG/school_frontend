@@ -12,6 +12,17 @@ const logStudent = createAsyncThunk(
   }
 )
 
+const logAdmin = createAsyncThunk(
+  'login/logAdmin', 
+  async ({email, password}) => {
+    const res = await axios.post('http://localhost:3000/login/admin', {
+      email: email, 
+      password: password
+    })
+    return res.data;
+  }
+)
+
 const loginSlice = createSlice({
   name: 'login', 
   initialState: {
@@ -19,12 +30,17 @@ const loginSlice = createSlice({
     studentLogged: false, 
     currentStudent: {},
     error: false, 
+    adminError: false
   },
   reducers: {
     studentLogOut: (state) => {
       state.studentLogged = false;
-    }
-  } ,
+    }, 
+    adminLogOut: (state) => {
+      state.adminLogged = false;
+    }, 
+
+  },
   extraReducers: (builder) => {
     builder
     .addCase(logStudent.fulfilled, (state, action) => {
@@ -35,9 +51,16 @@ const loginSlice = createSlice({
     .addCase(logStudent.rejected, (state) => {
       state.error = true;
     })
-
+    .addCase(logAdmin.fulfilled, (state, action) => {
+      state.adminLogged = action.payload.logged; 
+      state.error = false;
+    })
+    .addCase(logAdmin.rejected, (state) => {
+      state.adminError = true;
+    })
   }
 });
 
 export default loginSlice;
-export { logStudent };
+export { logStudent, logAdmin };
+export const { adminLogOut } = loginSlice.actions
