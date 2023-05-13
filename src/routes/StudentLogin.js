@@ -14,7 +14,7 @@ const StudentLogin = () => {
 
   useEffect(() => {
    if(logged) {
-    navigate('/')
+    navigate('/studentView')
    } 
   }, [logged, navigate])
   const handleSubmit = (e) => {

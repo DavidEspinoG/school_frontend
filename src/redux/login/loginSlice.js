@@ -63,4 +63,4 @@ const loginSlice = createSlice({
 
 export default loginSlice;
 export { logStudent, logAdmin };
-export const { adminLogOut } = loginSlice.actions
+export const { adminLogOut, studentLogOut } = loginSlice.actions
