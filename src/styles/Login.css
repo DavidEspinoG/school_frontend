@@ -1,0 +1,18 @@
+.login-container {
+  border: 2px solid var(--yellow);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 40px;
+}
+
+.login-links {
+  display: flex;
+  flex-direction: column;
+}
+
+.student-course-container {
+  margin-bottom: 15px;
+}

@@ -3,19 +3,21 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import loginSlice from "../redux/login/loginSlice";
 import { adminLogOut } from "../redux/login/loginSlice";
+import '../styles/Login.css';
 const { studentLogOut } = loginSlice.actions
 
-const Header = () => {
+const Login = () => {
   const studentLogged = useSelector(state => state.login.studentLogged);
   const adminLogged = useSelector(state => state.login.adminLogged);
   const dispatch = useDispatch();
   return (
-    <div>
-      <h2>Amazing School</h2>
-      <div>
+    <div className="login-container">
+      <h1>Amazing School</h1>
+      <div className="login-links">
         {!studentLogged ? 
           <NavLink to="/StudentLogin">Login as student</NavLink> 
           : <button 
+              className="button"
               type="button"
               onClick={() => dispatch(studentLogOut())}
             >
@@ -29,11 +31,9 @@ const Header = () => {
             >
                 Admin log out
             </button> }
-       
-        
       </div>
     </div>
   )
 };
 
-export default Header;
+export default Login;

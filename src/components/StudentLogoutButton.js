@@ -7,6 +7,7 @@ const StudentLogoutButton = () => {
   const navigate = useNavigate();
   return (
     <button
+      className="button"
       onClick={() => {
         dispatch(studentLogOut());
         navigate('/');

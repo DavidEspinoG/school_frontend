@@ -3,4 +3,70 @@
   --yellow: #FFB84C;
   --salmon: #F16767;
   --purple: #A459D1;
+  --font: 'Signika Negative', sans-serif;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font);
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+}
+h2 {
+  margin: 0;
+  font-size: 30px;
+}
+
+a {
+  color: var(--salmon);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+a:hover {
+  color: var(--yellow);
+}
+
+.main-border {
+  border: 2px solid var(--yellow);
+  border-radius: 10px;
+  padding: 50px;
+}
+
+.input {
+  font-size: 15px;
+  padding: 5px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.button {
+  border: none;
+  background-color: var(--salmon);
+  padding: 5px;
+  font-family: var(--font);
+  font-size: 16px;
+  color: #fff;
+}
+
+.button:hover {
+  background-color: var(--yellow);
 }

@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { fetchStudentCourses } from "../redux/courses/coursesSlice";
 import { fetchCurrentCourse } from "../redux/courses/coursesSlice";
 import { useNavigate } from "react-router-dom";
+import StudentLogoutButton from "../components/StudentLogoutButton";
 
 const MyCourses = () => {
   const navigate = useNavigate();
@@ -14,19 +15,19 @@ const MyCourses = () => {
   useEffect(() => {
     if(studentLogged) {
       dispatch(fetchStudentCourses(currentStudentId));
-      
     }
   }, [studentLogged, dispatch, currentStudentId])
   return (
-    <div>
+    <div className="main-border">
       <h2>My Courses</h2>
       {!studentLogged ? <p>Please log in to see this</p> : '' }
-      <div>
+      <div className="student-course-container">
         {courses.map(element => {
           return (
             <div key={element.id}>
               <p>{element.name}</p>
               <button
+                className="button"
                 onClick={() => {
                   dispatch(fetchCurrentCourse({
                     studentId: currentStudentId, 
@@ -38,9 +39,11 @@ const MyCourses = () => {
                 See my grades
               </button>
             </div>
+            
           )
         })}
       </div>
+      {studentLogged && <StudentLogoutButton /> }
     </div>
   )
 };

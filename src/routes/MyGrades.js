@@ -23,7 +23,7 @@ const MyGrades = () => {
 
   },[dispatch, courseId, navigate, studentId, studentLogged]);
   return (
-    <>
+    <div className="main-border">
       <h1>{courseName}'s grades</h1>
       <div>
         {grades.map(element => {
@@ -38,7 +38,7 @@ const MyGrades = () => {
           )
         })}
         <Link 
-          to="/" 
+          to="/studentView" 
           onClick={() => {
             console.log('works')
             dispatch(cleanCurrentCourse())
@@ -47,7 +47,7 @@ const MyGrades = () => {
           Back
         </Link>
       </div>
-    </>
+    </div>
     
   )
 };
