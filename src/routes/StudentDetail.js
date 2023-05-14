@@ -8,6 +8,7 @@ import CourseGrades from "../components/CourseGrades";
 import CreateNewGrades from "../components/CreateNewGrades";
 import { useState } from "react";
 import { useEffect } from "react";
+import GradesContainer from "../components/GradesContainer";
 
 const StudentDetail = () => {
   const studentDetail = useSelector(state => state.students.studentDetail);
@@ -27,23 +28,12 @@ const StudentDetail = () => {
       <div>
         {studentDetailCourses.map(element => {
           return (
-            <div key={element.id}>
-              <CourseGrades 
-                studentId={studentDetail.id} 
-                courseId={element.id} 
-                name={element.name}
-              />
-              <button 
-                onClick={() => {setFormIsVisible(prev => !prev)}}
-                className="button "
-              >
-                {formIsVisible ? 'Hide form' : 'Add new grade'}
-              </button>
-            {formIsVisible && <CreateNewGrades 
-              courseId={element.id}
-              setFormIsVisible={setFormIsVisible}
-              />}
-            </div>
+            <GradesContainer 
+              key={element.id}
+              id={element.id}
+              studentDetailId={studentDetail.id}
+              name={element.name}
+            />
         )})}
       </div>
       <CreateNewStudentCourse />
