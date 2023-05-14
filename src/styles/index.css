@@ -101,6 +101,7 @@ p {
 .all-students-container {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .text-center {
@@ -115,6 +116,8 @@ p {
   display: flex;
   gap: 20px;
   align-items: center;
+  justify-content: center;
+  padding: 20px 10px;
 }
 
 .all-students-button {
