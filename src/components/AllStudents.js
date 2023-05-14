@@ -23,35 +23,37 @@ const AllStudents = () => {
     dispatch(getStudents());
   }, [dispatch])
   return (
-    <>
-      <h2>All Students</h2>
-      <div>
-        {students.map(element => {
-          return (
-            <div key={element.id}>
-              <div>{element.name}</div>
-              <div>{element.email}</div>
-              <div>
-                <button
-                  onClick={() => handleDelete(element.id)}
-                >
-                  Delete Student
-                </button>
-                <button
-                  onClick={() => {
-                    dispatch(getStudentDetail(element.id));
-                    dispatch(getStudentDetailCourses(element.id));
-                    navigate(`/StudentDetail`)
-                  }}
-                >
-                  Student's courses
-                </button>
-              </div>
+    <div>
+      <h2 className="text-center">All Students</h2>
+      {students.map(element => {
+        return (
+          <div key={element.id} className="all-students-container">
+            <div>
+              <p>Name: {element.name}</p>
+              <p>Email: {element.email}</p>
             </div>
-          )
-        })}
-      </div>
-    </>
+            <div className="all-students-buttons">
+              <button
+                className="button all-students-button "
+                onClick={() => handleDelete(element.id)}
+              >
+                Delete Student
+              </button>
+              <button
+                className="button all-students-button"
+                onClick={() => {
+                  dispatch(getStudentDetail(element.id));
+                  dispatch(getStudentDetailCourses(element.id));
+                  navigate(`/StudentDetail`)
+                }}
+              >
+                Student's courses
+              </button>
+            </div>
+          </div>
+        )
+      })}
+    </div>
   )
 };
 

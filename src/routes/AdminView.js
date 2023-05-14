@@ -9,10 +9,9 @@ const AdminView = () => {
   const adminLogged = useSelector(state => state.login.adminLogged);
 
   return (
-    <>
+    <div className="main-border ">
     {adminLogged ? 
       <>
-        <h1>Admin view</h1>
         <AllStudents />
         <AllCourses />
         <CreateNewStudent />
@@ -24,7 +23,7 @@ const AdminView = () => {
       <Link to="/">Home</Link>
     </>
     }
-    </>
+    </div>
   )
 };
 

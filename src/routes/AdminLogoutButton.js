@@ -7,6 +7,7 @@ const AdminLogoutButton = () => {
   const navigate = useNavigate();
   return (
     <button
+      className="button"
       onClick={() => {
         dispatch(adminLogOut());
         navigate('/');

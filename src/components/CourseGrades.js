@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect } from "react";
 import { useState } from "react";
-import '../styles/CourseGrades.css';
+
 const CourseGrades = ({ studentId, courseId, name }) => {
     const [grades, setGrades] = useState([]);
     const getGrades = async (studentId, courseId) => {
@@ -10,15 +10,14 @@ const CourseGrades = ({ studentId, courseId, name }) => {
       setGrades(grades);
     };
     useEffect(() => {
-      getGrades(studentId, courseId);
+      if(studentId) {
+        getGrades(studentId, courseId);
+      } 
     }, [studentId, courseId]);
     return (
         <>
           <h2>Grades for "{name}" course</h2>
-          <button
-            onClick={() => getGrades(studentId, courseId)}
-          >Refresh</button>
-          <div>
+          <div className="two-colors-table">
             <div className="course-table-row">
               <div>
                 Quarter
@@ -28,6 +27,9 @@ const CourseGrades = ({ studentId, courseId, name }) => {
               </div>
               <div>
                 Status
+              </div>
+              <div>
+                Action
               </div>
               <div>
                 Action
@@ -46,12 +48,19 @@ const CourseGrades = ({ studentId, courseId, name }) => {
                     {element.passed ? "Approved" : "Not Approved"}
                   </div>
                   <div>
-                    <button className="course-table-button">Edit</button>
+                    <button  className="button">Edit</button>
+                  </div>
+                  <div>
+                    <button  className="button">Delete</button>
                   </div>
                 </div>
               )
             })}
           </div>
+          <button
+            className="button margin-right"
+            onClick={() => getGrades(studentId, courseId)}
+          >Refresh</button>
         </>
         
     );

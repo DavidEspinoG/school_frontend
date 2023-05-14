@@ -45,6 +45,8 @@ a:hover {
   border: 2px solid var(--yellow);
   border-radius: 10px;
   padding: 50px;
+  max-height: 85vh;
+  overflow-y: scroll;
 }
 
 .input {
@@ -68,5 +70,86 @@ a:hover {
 }
 
 .button:hover {
+  background-color: var(--purple);
+}
+
+.error {
+  color: var(--purple);
+}
+
+.student-view-grades {
+  display: flex;
+  justify-content: space-evenly;
   background-color: var(--yellow);
+  padding: 10px;
+  gap: 15px;
+}
+
+.student-view-grades:nth-child(even) {
+   background-color: #F16767;
+}
+
+.back-button {
+  margin-top: 10px;
+  display: block;
+}
+
+.all-students-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.display-block {
+  display: block;
+}
+
+.all-students-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.all-students-button {
+  height: 40px;
+}
+
+.course-admin:nth-child(odd){
+  background-color: var(--yellow);
+}
+.course-admin:nth-child(even){
+  background-color: var(--gray);
+}
+.course-admin > p {
+  margin: 0;
+} 
+
+.course-admin {
+  padding: 10px;
+}
+
+.course-table-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: 10px;
+}
+
+.course-table-row:nth-child(odd) {
+  background-color: var(--yellow);
+}
+
+.course-table-row:nth-child(even){
+  background-color: var(--gray);
+}
+
+.two-colors-table {
+  margin-bottom: 15px;
+}
+
+.margin-right {
+  margin-right: 10px;
 }

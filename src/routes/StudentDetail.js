@@ -6,15 +6,16 @@ import CreateNewStudentCourse from "../components/CreateStudentCourse";
 import { cleanStudentDetailCourses } from "../redux/students/studentsSlice";
 import CourseGrades from "../components/CourseGrades";
 import CreateNewGrades from "../components/CreateNewGrades";
+import { useState } from "react";
 
 const StudentDetail = () => {
   const studentDetail = useSelector(state => state.students.studentDetail);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const studentDetailCourses = useSelector(state => state.students.studentDetailCourses);
-
+  const [ formIsVisible, setFormIsVisible ] = useState(false);
   return (
-    <>
+    <div className="main-border">
       <h2>{studentDetail.name}'s courses</h2>
       <div>
         {studentDetailCourses.map(element => {
@@ -25,12 +26,18 @@ const StudentDetail = () => {
                 courseId={element.id} 
                 name={element.name}
               />
-            <CreateNewGrades courseId={element.id}/>
+              <button 
+                className="button "
+              >
+                Add new grade
+              </button>
+            {formIsVisible && <CreateNewGrades courseId={element.id}/>}
             </div>
         )})}
       </div>
       <CreateNewStudentCourse />
       <button
+        className="button"
         onClick={() => {
           navigate(`/admin`);
           dispatch(cleanStudentDetail());
@@ -39,7 +46,7 @@ const StudentDetail = () => {
       >
         Back
       </button>
-    </>
+    </div>
   )
 };
 

@@ -47,7 +47,7 @@ const StudentLogin = () => {
             Submit
         </button>
       </form>
-      {error ? <p>The email or the password are not correct</p> : ''}
+      {error ? <p className="error">The email or the password are not correct</p> : ''}
       <Link to="/" >Back</Link>
     </div>
   )

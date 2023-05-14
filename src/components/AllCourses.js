@@ -13,11 +13,16 @@ const AllCourses = () => {
   return (
     <>
       <h2>All Courses</h2>
-      <div>
+      <div
+      className="all-courses-admin"
+      >
         {courses.map(element => {
           return (
-            <div key={element.id}>
-              <div>{element.name}</div>
+            <div
+              className="course-admin" 
+              key={element.id} 
+              >
+              <p>{element.name}</p>
             </div>
           )
         })}

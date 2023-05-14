@@ -28,19 +28,16 @@ const MyGrades = () => {
       <div>
         {grades.map(element => {
           return (
-            <>
-              <div key={element.id}>
-                <div>Quarter: {element.quarter} </div>
-                <div>Grade: {element.grade} </div>
-                <div>Status: {element.quarter ? 'Aproved' : 'Not aproved'} </div>
-              </div>
-            </>
+            <div key={element.id} className="student-view-grades">
+              <div>Quarter: {element.quarter} </div>
+              <div>Grade: {element.grade} </div>
+              <div>Status: {element.quarter ? 'Aproved' : 'Not aproved'} </div>
+            </div>
           )
         })}
         <Link 
           to="/studentView" 
           onClick={() => {
-            console.log('works')
             dispatch(cleanCurrentCourse())
           }}
         >

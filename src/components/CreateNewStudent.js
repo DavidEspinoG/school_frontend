@@ -25,9 +25,12 @@ const CreateNewStudent = () => {
   return (
     <div>
       <h2>Create New Student</h2>
-      <form onSubmit={handleSubmit}>
+      <form 
+        className="form"
+        onSubmit={handleSubmit}>
         <input 
-          type="text" 
+          type="text"
+          className="input" 
           placeholder="Name" 
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -39,6 +42,7 @@ const CreateNewStudent = () => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          className="input"
         />
         <input 
           type="password" 
@@ -46,8 +50,11 @@ const CreateNewStudent = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          className="input"
         />
-        <button type="submit">Submit</button>
+        <button 
+          className="button"
+          type="submit">Submit</button>
         <p>{message}</p>
       </form>
     </div>

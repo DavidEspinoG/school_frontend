@@ -23,15 +23,20 @@ const CreateNewStudentCourse = () => {
   return (
     <div>
       <h2>Create a new course for this student</h2>
-      <form onSubmit={handleSubmit}>
+      <form
+        className="form" 
+        onSubmit={handleSubmit}>
         <input 
+          className="input"
           type="text" 
           placeholder="Course name" 
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
         />
-        <button type="submit">Submit</button>
+        <button 
+          className="button"
+          type="submit">Submit</button>
         <p>{message}</p>
       </form>
     </div>

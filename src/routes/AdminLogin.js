@@ -20,28 +20,34 @@ const AdminLogin = () => {
    }, [logged, navigate]);
 
   return (
-    <div>
-      <h3>Admin Login</h3>
-      <form onSubmit={(e) => {
+    <div className="main-border">
+      <h2>Admin Login</h2>
+      <form 
+        className="form"
+        onSubmit={(e) => {
         e.preventDefault();
         dispatch(logAdmin({email, password}))
       }}>
         <input 
+          className="input"
           type="text" 
           placeholder="Your email"
           value={email}  
           onChange={(e) => setEmail(e.target.value)}
         />
         <input 
+          className="input"
           type="password" 
           placeholder="Your password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button 
+          className="button"
+          type="submit">Submit</button>
       </form>
       {error ? <p>The email or the password are not correct</p> : ''}
-      <Link to="/" >Home</Link>
+      <Link to="/" className="back-button">Back</Link>
     </div>
   )
 };
