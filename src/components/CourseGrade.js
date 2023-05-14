@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import deleteGrade from "../utils/deleteGrade";
+import updateGrade from "../utils/updateGrade";
 
 const CourseGrade = ({
     id,
@@ -12,6 +13,8 @@ const CourseGrade = ({
   }) => {
   const [ editable, setEditable ] = useState(false);
   const [ status, setStatus ] = useState('');
+  const [ newPassed, setNewPassed ] = useState(passed);
+  const [ newGrade, setNewGrade ] = useState(grade);
   useEffect(() => {
     if(passed) {
       setStatus('Approved')
@@ -39,7 +42,11 @@ const CourseGrade = ({
           <p>{grade}</p> :
           <input
             type="number"  
-            defaultValue={grade}
+            // defaultValue={grade}
+            value={newGrade}
+            onChange={(e) => {
+              setNewGrade(e.target.value)
+            }}
             min={0}
             max={10}
             required
@@ -50,7 +57,13 @@ const CourseGrade = ({
         {!editable ?
           <p>{status}</p>
           : 
-          <select disabled={!editable}>
+          <select 
+            value={newPassed}
+            onChange={(e) => {
+              setNewPassed(e.target.value) 
+            }}
+            // defaultValue={passed}
+            >
             <option 
               value={true}
               selected={passed}>Approved</option>
@@ -72,8 +85,12 @@ const CourseGrade = ({
         </button>
           {editable && 
           <button
-            onClick={() => {
+            onClick={ async () => {
+              // console.log(id, newPassed, newGrade)
+              await updateGrade(id, newPassed, newGrade)
+              getGrades(studentId, courseId);
               setEditable(false);
+
             }}
             className="button"
           >
