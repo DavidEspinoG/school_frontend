@@ -1,6 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+const getStudentsOfCourse = createAsyncThunk(
+  'students/getStudentsOfCourse', 
+  async(courseId) => {
+    const res = await axios.get(`http://localhost:3000/students/course/${courseId}`)
+    return res.data;
+  }
+)
+
 const getStudents = createAsyncThunk(
   'students/getStudents', 
   async () => {
@@ -31,6 +39,7 @@ const studentsSlice = createSlice({
     students: [],
     studentDetail: {},
     studentDetailCourses: [],
+    studentsOfCourse: [],
   },
   reducers: {
     cleanStudentDetail: (state) => {
@@ -38,7 +47,10 @@ const studentsSlice = createSlice({
     },
     cleanStudentDetailCourses: (state) => {
       state.studentDetailCourses = [];
-    }
+    },
+    cleanStudentsOfCourse: (state) => {
+      state.studentsOfCourse = []
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -49,11 +61,23 @@ const studentsSlice = createSlice({
         state.studentDetail = action.payload;
       })
       .addCase(getStudentDetailCourses.fulfilled, (state, action) => {
-        state.studentDetailCourses= action.payload;
+        state.studentDetailCourses = action.payload;
+      })
+      .addCase(getStudentsOfCourse.fulfilled, (state, action) => {
+        state.studentsOfCourse = action.payload;
       })
   } 
 })
 
 export default studentsSlice;
-export { getStudents, getStudentDetail, getStudentDetailCourses }
-export const { cleanStudentDetail, cleanStudentDetailCourses } = studentsSlice.actions;
+export { 
+  getStudents, 
+  getStudentDetail, 
+  getStudentDetailCourses,
+  getStudentsOfCourse
+ }
+export const { 
+  cleanStudentDetail, 
+  cleanStudentDetailCourses,
+  cleanStudentsOfCourse,
+ } = studentsSlice.actions;

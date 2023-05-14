@@ -7,6 +7,7 @@ import { cleanStudentDetailCourses } from "../redux/students/studentsSlice";
 import CourseGrades from "../components/CourseGrades";
 import CreateNewGrades from "../components/CreateNewGrades";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const StudentDetail = () => {
   const studentDetail = useSelector(state => state.students.studentDetail);
@@ -14,6 +15,12 @@ const StudentDetail = () => {
   const dispatch = useDispatch();
   const studentDetailCourses = useSelector(state => state.students.studentDetailCourses);
   const [ formIsVisible, setFormIsVisible ] = useState(false);
+  const adminLogged = useSelector(state => state.login.adminLogged);
+  useEffect(() => {
+    if(!adminLogged) {
+      navigate('/')
+    }
+  }, [adminLogged])
   return (
     <div className="main-border">
       <h2>{studentDetail.name}'s courses</h2>
@@ -27,11 +34,15 @@ const StudentDetail = () => {
                 name={element.name}
               />
               <button 
+                onClick={() => {setFormIsVisible(prev => !prev)}}
                 className="button "
               >
-                Add new grade
+                {formIsVisible ? 'Hide form' : 'Add new grade'}
               </button>
-            {formIsVisible && <CreateNewGrades courseId={element.id}/>}
+            {formIsVisible && <CreateNewGrades 
+              courseId={element.id}
+              setFormIsVisible={setFormIsVisible}
+              />}
             </div>
         )})}
       </div>

@@ -114,7 +114,7 @@ a:hover {
 }
 
 .all-students-button {
-  height: 40px;
+  height: 50px;
 }
 
 .course-admin:nth-child(odd){
@@ -129,6 +129,8 @@ a:hover {
 
 .course-admin {
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .course-table-row {
@@ -152,4 +154,9 @@ a:hover {
 
 .margin-right {
   margin-right: 10px;
+}
+
+.display-flex {
+  display: flex;
+  gap: 20px;
 }

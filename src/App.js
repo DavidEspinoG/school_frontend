@@ -6,6 +6,7 @@ import MyGrades from './routes/MyGrades';
 import AdminView from './routes/AdminView';
 import StudentView from './routes/StudentView';
 import StudentDetail from './routes/StudentDetail';
+import StudentsOfCourse from './routes/StudentsOfCourse';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="admin" element={<AdminView/>}/>
         <Route path="studentView" element={<StudentView/>} />
         <Route path="StudentDetail" element={<StudentDetail/>} />
+        <Route path="StudentsOfCourse" element={<StudentsOfCourse/>} />
         <Route path="*" element={<p>Not found</p>}/>
       </Routes>
     </>
