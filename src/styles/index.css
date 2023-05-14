@@ -41,6 +41,10 @@ a:hover {
   color: var(--yellow);
 }
 
+p {
+  margin: 0;
+}
+
 .main-border {
   border: 2px solid var(--yellow);
   border-radius: 10px;

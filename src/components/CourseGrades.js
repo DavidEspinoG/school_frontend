@@ -41,6 +41,7 @@ const CourseGrades = ({ studentId, courseId, name }) => {
             {grades.map(element => {
               return (
                 <CourseGrade 
+                  key={element.id}
                   id={element.id}
                   quarter={element.quarter}
                   grade={element.grade}
@@ -49,52 +50,6 @@ const CourseGrades = ({ studentId, courseId, name }) => {
                   studentId={studentId}
                   courseId={courseId}
                 />
-                // <div className="course-table-row" key={element.id}>
-                //   <div>
-                //     <input
-                //       type="text"  
-                //       value={element.quarter}
-                //       disabled={!editable}
-                //     />
-                //   </div>
-                //   <div>
-                //     <input  
-                //       type="text"
-                //       readOnly
-                //       value={element.grade}
-                //       disabled={!editable}
-                //     />
-                    
-                //   </div>
-                //   <div>
-                //     <select disabled={!editable}>
-                //       <option 
-                //         value={true}
-                //         selected={element.passed}>Approved</option>
-                //       <option 
-                //         value={false}
-                //         selected={!element.passed}>Not approved</option>
-                //     </select>
-                //   </div>
-                //   <div>
-                //     <button
-                //       onClick={() => {
-                //         setEditable(prev => !prev);
-                //       }}
-                //       className="button">Edit</button>
-                //   </div>
-                //   <div>
-                //     <button
-                //       onClick={async() => {
-                //         await deleteGrade(element.id);
-                //         getGrades(studentId, courseId);
-                //       }} 
-                //       className="button"
-                //     >
-                //       Delete
-                //     </button>
-                //   </div>
-                // </div>
               )
             })}
           </div>
