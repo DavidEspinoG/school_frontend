@@ -1,10 +1,11 @@
 import { createSlice, createAsyncThunk  } from "@reduxjs/toolkit";
 import axios from "axios";
+import apiUrl from "../../utils/apiUrl";
 
 const logStudent = createAsyncThunk(
   'login/logStudent', 
   async ({email, password}) => {
-    const res = await axios.post('http://localhost:3000/login/student', {
+    const res = await axios.post(`${apiUrl}/login/student`, {
       email: email, 
       password: password
     })
@@ -15,7 +16,7 @@ const logStudent = createAsyncThunk(
 const logAdmin = createAsyncThunk(
   'login/logAdmin', 
   async ({email, password}) => {
-    const res = await axios.post('http://localhost:3000/login/admin', {
+    const res = await axios.post(`${apiUrl}/login/admin`, {
       email: email, 
       password: password
     })

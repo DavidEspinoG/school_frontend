@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getStudentDetailCourses } from "../redux/students/studentsSlice";
 import { useSelector } from "react-redux";
+import apiUrl from "../utils/apiUrl";
 
 const CreateNewStudentCourse = () => {
   const [name, setName] = useState("");
@@ -10,7 +11,7 @@ const CreateNewStudentCourse = () => {
   const dispatch = useDispatch();
   const studentDetail = useSelector((state) => state.students.studentDetail);
   const postNewStudentCourse = async (courseName, studentId) => {
-    const res = await axios.post(`http://localhost:3000/students/${studentId}/courses`, {
+    const res = await axios.post(`${apiUrl}/students/${studentId}/courses`, {
       name: courseName,
     });
     setMesssage(res.data.message);

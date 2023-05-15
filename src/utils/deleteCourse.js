@@ -1,8 +1,8 @@
 import axios from "axios";
+import apiUrl from "./apiUrl";
 
 const deleteCourse = async (id) => {
-  const res = await axios.delete(`http://localhost:3000/courses/${id}`);
-  console.log(res.data);
+  const res = await axios.delete(`${apiUrl}/courses/${id}`);
   return res.data
 };
 

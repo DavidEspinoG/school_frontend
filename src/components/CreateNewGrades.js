@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import apiUrl from "../utils/apiUrl";
 
 const CreateNewGrades = ({courseId, setFormIsVisible}) => {
   const [quarter, setQuarter] = useState(1);
@@ -10,7 +11,7 @@ const CreateNewGrades = ({courseId, setFormIsVisible}) => {
   const studentId = useSelector(state => state.students.studentDetail.id);
   const postGrades = async (studentId, courseId, quarter, grade, status) => {
     try {
-      const res = await axios.post(`http://localhost:3000/students/${studentId}/grades`, {
+      const res = await axios.post(`${apiUrl}/students/${studentId}/grades`, {
         quarter,
         grade,
         passed: status,

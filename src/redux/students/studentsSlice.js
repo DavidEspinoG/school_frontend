@@ -1,10 +1,12 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+import apiUrl from "../../utils/apiUrl";
+
 
 const getStudentsOfCourse = createAsyncThunk(
   'students/getStudentsOfCourse', 
   async(courseId) => {
-    const res = await axios.get(`http://localhost:3000/students/course/${courseId}`)
+    const res = await axios.get(`${apiUrl}/students/course/${courseId}`)
     return res.data;
   }
 )
@@ -12,7 +14,7 @@ const getStudentsOfCourse = createAsyncThunk(
 const getStudents = createAsyncThunk(
   'students/getStudents', 
   async () => {
-    const res = await axios.get('http://localhost:3000/students');
+    const res = await axios.get(`${apiUrl}/students`);
     return res.data;
   }
 );
@@ -20,7 +22,7 @@ const getStudents = createAsyncThunk(
 const getStudentDetail = createAsyncThunk(
   'students/getStudentDetail',
   async (id) => {
-    const res = await axios.get(`http://localhost:3000/students/${id}`);
+    const res = await axios.get(`${apiUrl}/students/${id}`);
     return res.data;
   }
 );
@@ -28,7 +30,7 @@ const getStudentDetail = createAsyncThunk(
 const getStudentDetailCourses = createAsyncThunk(
   'students/getStudentDetailCourses',
   async (studentId) => {
-    const res = await axios.get(`http://localhost:3000/students/${studentId}/courses`);
+    const res = await axios.get(`${apiUrl}/students/${studentId}/courses`);
     return res.data;
   }
 );

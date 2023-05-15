@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import apiUrl from "../utils/apiUrl";
 
 const StudentsOfCourse = () => {
   const studentsOfCourse = 
@@ -10,7 +11,7 @@ const StudentsOfCourse = () => {
       <div>
         {studentsOfCourse.map(element => {
           return (
-            <div>
+            <div key={element.id}>
               <p>{element.name}</p>
             </div>
           )

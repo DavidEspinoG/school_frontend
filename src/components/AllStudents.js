@@ -6,12 +6,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { getStudentDetail } from "../redux/students/studentsSlice";
 import { getStudentDetailCourses } from "../redux/students/studentsSlice";
+import apiUrl from "../utils/apiUrl";
 
 const AllStudents = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const deleteStudent = async (id) => {
-    const res = await axios.delete(`http://localhost:3000/students/${id}`);
+    const res = await axios.delete(`${apiUrl}/students/${id}`);
     return res.data;
   };
   const handleDelete = async (id) => {

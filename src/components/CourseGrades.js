@@ -3,14 +3,20 @@ import { useEffect } from "react";
 import { useState } from "react";
 import deleteGrade from "../utils/deleteGrade";
 import CourseGrade from "./CourseGrade";
+import apiUrl from "../utils/apiUrl";
 
 const CourseGrades = ({ studentId, courseId, name }) => {
     const [grades, setGrades] = useState([]);
     const [ editable, setEditable ] = useState(false);
     const getGrades = async (studentId, courseId) => {
-      const res = await axios.get(`http://localhost:3000/students/${studentId}/courses/${courseId}/grades`);
-      const grades = res.data;
-      setGrades(grades);
+      try {
+        const res = await axios.get(`${apiUrl}/students/${studentId}/courses/${courseId}/grades`);
+        const grades = res.data;
+        setGrades(grades);
+      } catch(err) {
+        console.log(err);
+      }
+      
     };
     useEffect(() => {
       if(studentId) {

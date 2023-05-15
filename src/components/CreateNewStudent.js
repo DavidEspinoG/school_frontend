@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { getStudents } from "../redux/students/studentsSlice";
+import apiUrl from "../utils/apiUrl";
 
 const CreateNewStudent = () => {
   const [name, setName] = useState("");
@@ -10,7 +11,7 @@ const CreateNewStudent = () => {
   const [message, setMesssage] = useState("");
   const dispatch = useDispatch();
   const postNewStudent = async (name, email, password) => {
-    const res = await axios.post("http://localhost:3000/students", {
+    const res = await axios.post(`${apiUrl}/students`, {
       name,
       email,
       password,
